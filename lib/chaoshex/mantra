@@ -1,0 +1,119 @@
+#!/bin/bash
+echo
+read -p "Enter a statement of intent: " statement
+#echo "Your statement: $statement"
+
+A=false;
+B=false;
+C=false;
+D=false;
+E=false;
+F=false;
+G=false;
+H=false;
+I=false;
+J=false;
+K=false;
+L=false;
+M=false;
+N=false;
+O=false;
+P=false;
+Q=false;
+R=false;
+S=false;
+T=false;
+U=false;
+V=false;
+W=false;
+X=false;
+Y=false;
+Z=false;
+
+for (( i=0; i<${#statement}; i++ )); do
+	case ${statement:$i:1} in
+		[Aa] ) A=true;;
+		[Bb] ) B=true;;
+		[Cc] ) C=true;;
+		[Dd] ) D=true;;
+		[Ee] ) E=true;;
+		[Ff] ) F=true;;
+		[Gg] ) G=true;;
+		[Hh] ) H=true;;
+		[Ii] ) I=true;;
+		[Jj] ) J=true;;
+		[Kk] ) K=true;;
+		[Ll] ) L=true;;
+		[Mm] ) M=true;;
+		[Nn] ) N=true;;
+		[Oo] ) O=true;;
+		[Pp] ) P=true;;
+		[Qq] ) Q=true;;
+		[Rr] ) R=true;;
+		[Ss] ) S=true;;
+		[Tt] ) T=true;;
+		[Uu] ) U=true;;
+		[Vv] ) V=true;;
+		[Ww] ) W=true;;
+		[Xx] ) X=true;;
+		[Yy] ) Y=true;;
+		[Zz] ) Z=true;;
+	esac;
+done
+
+vowels=''
+if $A; then vowels="${vowels}A"; fi
+if $E; then vowels="${vowels}E"; fi
+if $I; then vowels="${vowels}I"; fi
+if $O; then vowels="${vowels}O"; fi
+if $U; then vowels="${vowels}U"; fi
+#echo "Vowels: ${vowels}"
+
+consts=''
+if $B; then consts="${consts}B"; fi
+if $C; then consts="${consts}C"; fi
+if $D; then consts="${consts}D"; fi
+if $F; then consts="${consts}F"; fi
+if $G; then consts="${consts}G"; fi
+if $H; then consts="${consts}H"; fi
+if $J; then consts="${consts}J"; fi
+if $K; then consts="${consts}K"; fi
+if $L; then consts="${consts}L"; fi
+if $M; then consts="${consts}M"; fi
+if $N; then consts="${consts}N"; fi
+if $P; then consts="${consts}P"; fi
+if $Q; then consts="${consts}Q"; fi
+if $R; then consts="${consts}R"; fi
+if $S; then consts="${consts}S"; fi
+if $T; then consts="${consts}T"; fi
+if $V; then consts="${consts}V"; fi
+if $W; then consts="${consts}W"; fi
+if $X; then consts="${consts}X"; fi
+if $Y; then consts="${consts}Y"; fi
+if $Z; then consts="${consts}B"; fi
+#echo "Consts: ${consts}"
+
+((last_c = ${#consts} - 1))
+((last_v = ${#vowels} - 1))
+
+c1=$(shuf -i 0-${last_c} -n 1)
+c2=$(shuf -i 0-${last_c} -n 1)
+v1=$(shuf -i 0-${last_v} -n 1)
+syl="${consts:$c1:1}${vowels:$v1:1}${consts:$c2:1}"
+#echo $syl
+
+c1=$(shuf -i 0-${last_c} -n 1)
+c2=$(shuf -i 0-${last_c} -n 1)
+v1=$(shuf -i 0-${last_v} -n 1)
+syl2="${consts:$c1:1}${vowels:$v1:1}${consts:$c2:1}"
+#echo $syl2
+
+c1=$(shuf -i 0-${last_c} -n 1)
+v1=$(shuf -i 0-${last_v} -n 1)
+syl3="${consts:$c1:1}${vowels:$v1:1}"
+#echo $syl3
+
+mantra="${syl}${syl2}${syl3}"
+echo
+echo "Mantra: $mantra"
+echo

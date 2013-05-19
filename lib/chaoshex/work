@@ -1,0 +1,37 @@
+#!/bin/bash
+orange=$(tput setaf 3)
+txtrst=$(tput sgr0)
+echo
+echo $orange'CHAOSHEX Work program initiated'
+select command in "cast" "mantra" "cancel"; do
+        case $command in
+                cast ) echo Casting orange magic spell;
+                        echo X will succeed at Y;
+                        read -p "Enter X: " workx;
+                        read -p "Enter Y: " worky;
+                        read -p "$workx will succeed at $worky. Confirm (Y/N) " -i "Y" confirm;
+                        case $confirm in
+                                [Yy]* ) echo Hacking into reality...; 
+                                        sleep 1;
+                                        echo Data located.;
+                                        sleep 1;
+                                        echo Updating reality data.;
+					/usr/local/lib/chaoshex/gnosis;
+                                        echo;
+                                        echo Update complete.
+                                        echo Committing changes;
+                                        sleep 2;
+                                        echo Reality permanently changed.;;
+                        esac; 
+                        break;;
+                scry ) echo scrying; break;;
+                evoke ) echo evocation; break;;
+                invoke ) echo invocation; break;;
+                mantra ) /usr/local/lib/chaoshex/mantra; break;;
+                sigil ) echo sigil; break;;
+                cancel ) break;;
+        esac    
+done 
+
+echo $txtrst
+echo

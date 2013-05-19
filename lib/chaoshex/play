@@ -1,0 +1,38 @@
+#!/bin/bash
+blue=$(tput setaf 4)
+white=$(tput sgr0)
+echo
+echo $blue'CHAOSHEX Play program initiated'
+#select command in "cast" "scry" "evoke" "invoke" "mantra" "sigil" "cancel"; do
+select command in "cast" "mantra" "cancel"; do
+        case $command in
+                cast ) echo Casting blue magic spell;
+                        echo X will get pleasure from Y;
+                        read -p "Enter X: " playx;
+                        read -p "Enter Y: " playy;
+                        read -p "$playx will get pleasure from $playy. Confirm (Y/N) " -i "Y" confirm;
+                        case $confirm in
+                                [Yy]* ) echo Hacking into reality...; 
+                                        sleep 1;
+                                        echo Data located.;
+                                        sleep 1;
+                                        echo Updating reality data.;
+					/usr/local/lib/chaoshex/gnosis;
+                                        echo;
+                                        echo Update complete.
+                                        echo Committing changes;
+                                        sleep 2;
+                                        echo Reality permanently changed.;;
+                        esac; 
+                        break;;
+                scry ) echo scrying; break;;
+                evoke ) echo evocation; break;;
+                invoke ) echo invocation; break;;
+                mantra ) /usr/local/lib/chaoshex/mantra; break;;
+                sigil ) echo sigil; break;;
+                cancel ) break;;
+        esac    
+done 
+
+echo $white
+echo

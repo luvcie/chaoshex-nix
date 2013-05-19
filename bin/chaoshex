@@ -1,0 +1,30 @@
+#!/bin/bash
+echo
+echo Starting CHAOSHEX...
+echo
+logged_in=true
+while $logged_in; do
+	read -p "anon@chaoshex:~ " input_command
+	case $input_command in
+		"") ;;
+		magick ) /usr/local/lib/chaoshex/magick;;
+		love ) /usr/local/lib/chaoshex/love;;
+		war ) /usr/local/lib/chaoshex/war;;
+		sex ) /usr/local/lib/chaoshex/sex;;
+		death ) /usr/local/lib/chaoshex/death;;
+		work ) /usr/local/lib/chaoshex/work;;
+		play ) /usr/local/lib/chaoshex/play;;
+		ego ) /usr/local/lib/chaoshex/ego;;
+		psyche ) /usr/local/lib/chaoshex/psyche;;
+		help ) /usr/local/lib/chaoshex/help;;
+		about ) /usr/local/lib/chaoshex/about;;
+		hex ) /usr/local/lib/chaoshex/penguin;;
+		penguin ) /usr/local/lib/chaoshex/penguin;;
+		rats ) /usr/local/lib/chaoshex/rats;;
+		exit ) logged_in=false;;
+		*) echo "Unknown command. Try 'help'."
+		echo '';;
+	esac
+done
+echo Ending CHAOSHEX
+echo 

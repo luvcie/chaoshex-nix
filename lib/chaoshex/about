@@ -1,0 +1,9 @@
+#!/bin/bash
+echo
+echo CHAOSHEX 1.0 for Linux.
+echo By Anton Channing http://antonchanning.com
+echo Based on a previous version written for DOS.
+echo
+echo See http://kiamagic.com/wiki/index.php/Anton_Channing_Technology
+echo for more details about how this works...
+echo 

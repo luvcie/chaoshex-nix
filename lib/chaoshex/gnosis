@@ -1,0 +1,8 @@
+#!/bin/bash
+tput smcup
+clear
+
+/usr/local/lib/chaoshex/gnosis_inducer
+
+sleep 2
+tput rmcup

@@ -1,0 +1,97 @@
+#!/bin/bash
+TERM_WIDTH=$(tput cols)
+TERM_HEIGHT=$(tput lines)
+
+# virtual coordinate system is X*Y ${#DATA} * 5
+REAL_OFFSET_X=0
+REAL_OFFSET_Y=0
+
+draw_char() {
+	V_COORD_X=$(shuf -i 1-$TERM_WIDTH -n 1)
+	V_COORD_Y=$(shuf -i 2-$TERM_HEIGHT -n 1)
+	c=$(shuf -i 0-7 -n 1)
+	tput setab $c
+	c=$(shuf -i 0-7 -n 1)
+	tput setaf $c
+
+	tput cup $((REAL_OFFSET_Y + V_COORD_Y)) $((REAL_OFFSET_X + V_COORD_X))
+
+	printf %c "@"
+}
+
+drop_char() {
+	V_COORD_X=$(shuf -i 1-$TERM_WIDTH -n 1)
+	y=$(shuf -i 10-$TERM_HEIGHT -n 1)
+
+	c=$(shuf -i 0-7 -n 1)
+	tput setab $c
+
+	for((V_COORD_Y=1;V_COORD_Y<=$y;V_COORD_Y++)); do
+		c=$(shuf -i 0-7 -n 1)
+		tput setaf $c
+
+		tput cup $((REAL_OFFSET_Y + V_COORD_Y)) $((REAL_OFFSET_X + V_COORD_X))
+
+		printf %c "*"
+	done
+}
+raise_char() {
+	V_COORD_X=$(shuf -i 1-$TERM_WIDTH -n 1)
+	y=$(shuf -i 1-$TERM_HEIGHT -n 1)
+
+	c=$(shuf -i 0-7 -n 1)
+	tput setab $c
+
+	for((V_COORD_Y=$TERM_HEIGHT;V_COORD_Y>=$y;V_COORD_Y--)); do
+		c=$(shuf -i 0-7 -n 1)
+		tput setaf $c
+
+		tput cup $((REAL_OFFSET_Y + V_COORD_Y)) $((REAL_OFFSET_X + V_COORD_X))
+
+		printf %c "^"
+	done
+}
+shoot_left() {
+	V_COORD_Y=$(shuf -i 1-$TERM_HEIGHT -n 1)
+	x=$(shuf -i 1-$TERM_WIDTH -n 1)
+
+	c=$(shuf -i 0-7 -n 1)
+	tput setab $c
+
+	for((V_COORD_X=$TERM_WIDTH;V_COORD_X>=$x;V_COORD_X--)); do
+		c=$(shuf -i 0-7 -n 1)
+		tput setaf $c
+
+		tput cup $((REAL_OFFSET_Y + V_COORD_Y)) $((REAL_OFFSET_X + V_COORD_X))
+
+		printf %c "<"
+	done
+}
+shoot_right() {
+	V_COORD_Y=$(shuf -i 1-$TERM_HEIGHT -n 1)
+	x=$(shuf -i 1-$TERM_WIDTH -n 1)
+
+	c=$(shuf -i 0-7 -n 1)
+	tput setab $c
+
+	for((V_COORD_X=1;V_COORD_X<=$x;V_COORD_X++)); do
+		c=$(shuf -i 0-7 -n 1)
+		tput setaf $c
+
+		tput cup $((REAL_OFFSET_Y + V_COORD_Y)) $((REAL_OFFSET_X + V_COORD_X))
+
+		printf %c ">"
+	done
+}
+
+	for ((i=1; i <= 2350; i++)); do
+	
+		style=$(shuf -i 1-93 -n 1)
+		case $style in
+			1 ) drop_char;;
+			2 ) raise_char;;
+			3 ) shoot_left;;
+			4 ) shoot_right;;
+			* ) draw_char;;
+		esac
+	done

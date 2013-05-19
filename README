@@ -1,0 +1,20 @@
+Requirements
+************
+A bash command line environment
+
+Installation
+************
+To install ChaosHex.
+
+1. Copy the file 'chaoshex' (from the 'bin' folder) to /usr/local/bin/
+2. Ensure it has 'execute' permision to all users...
+	sudo chmod 755 /usr/local/bin/chaoshex
+3. Copy the folder 'chaoshex' (from the 'lib' folder) to /usr/local/lib/
+4. Ensure all files therein have execute permission for all users
+	cd /usr/local/lib/chaoshex
+	sudo chmod 755 *
+
+Using
+*****
+To use, just type type 'chaoshex' on the commandline and press return.
+Chaoshex accepts various commands. Use 'help' if you don't remember any.
